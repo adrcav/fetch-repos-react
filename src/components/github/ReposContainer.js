@@ -12,7 +12,8 @@ export default class ReposContainer extends Component {
         this.state = {
             repos: [],
             username: '',
-            loading: false
+            loading: false,
+            error: false
         }
     }
 
@@ -26,13 +27,14 @@ export default class ReposContainer extends Component {
             this.setState({ repos: response.data });
         } catch (err) {
             console.log(err);
+            this.setState({ error: true });
         }
 
         this.setState({ loading: false });
     };
 
     handleChange = (event) => {
-        this.setState({ username: event.target.value });
+        this.setState({ username: event.target.value, error: false });
 
         if (!event.target.value.length) {
             this.setState({ repos: [] });
@@ -50,15 +52,23 @@ export default class ReposContainer extends Component {
                     this.state.repos.length && this.state.username.length ? 'show' : ''
                 )}
                 >
-                    <div className="content">
+                    <div className={classNames(
+                        "content",
+                        "animated fadeInDown delay-400ms fast"
+                    )}>
                         <p><span role="img" aria-label="Search Icon">🔍</span> Fetch Repos</p>
-                        <DebounceInput
-                            minLength={2}
-                            debounceTimeout={300}
-                            type="search"
-                            onChange={this.handleChange}
-                            placeholder="Username"
-                        />
+                        <div className="search">
+                            <DebounceInput
+                                minLength={2}
+                                debounceTimeout={300}
+                                type="search"
+                                onChange={this.handleChange}
+                                placeholder="GitHub Username"
+                                className={classNames(
+                                    this.state.error ? 'animated shake fast' : ''
+                                )}
+                            />
+                        </div>
                     </div>
                 </header>
 
