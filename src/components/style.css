@@ -19,9 +19,10 @@ header {
     background: -o-linear-gradient(315deg, rgba(115,146,236,1) 0%, rgba(146,172,233,1) 100%);
     background: linear-gradient(135deg, rgba(115,146,236,1) 0%, rgba(146,172,233,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7392ec",endColorstr="#92ace9",GradientType=1);
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+    -webkit-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    transition: all .6s ease-in-out;
+    transition-timing-function: cubic-bezier(.17,.67,.51,1.18);
 }
 
 header.show {
@@ -116,8 +117,9 @@ header .content {
 
 .repos-list .repo {
   position: relative;
-  /* width: 100%; */
+  width: 100%;
   height: auto;
+  left: -12px;
   background-color: white;
   padding: 10px;
   border-radius: 5px;
@@ -138,14 +140,14 @@ header .content {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  left: -50px;
+  left: -60px;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   color: white;
   font-weight: 600;
-  width: 50px;
+  width: 60px;
   text-align: center;
   font-size: 1.2em;
   -webkit-transition: none;
@@ -154,7 +156,7 @@ header .content {
 }
 
 .repos-list .repo.popular:hover {
-  border-left: 50px solid rgb(115,146,236);
+  border-left: 60px solid rgb(115,146,236);
 }
 
 .repos-list .repo.popular:hover .stars {

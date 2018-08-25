@@ -1,12 +1,14 @@
 {
-  "name": "intro-react",
+  "name": "fetch-repos-react",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://adrcav.github.io/fetch-repos-react/",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "number-abbreviate": "^2.0.0",
     "react": "^16.4.2",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
   },

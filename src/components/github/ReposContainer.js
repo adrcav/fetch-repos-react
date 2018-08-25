@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import DebounceInput from 'react-debounce-input';
 
 import { fetchRepos } from '../../services/repos';
 import ReposList from './ReposList';
@@ -33,38 +34,31 @@ export default class ReposContainer extends Component {
     handleChange = (event) => {
         this.setState({ username: event.target.value });
 
-        if (!event.target.value.length)
+        if (!event.target.value.length) {
             this.setState({ repos: [] });
-    };
+            return;
+        }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.getRepos(this.state.username);
-    };
-
-    changeLoading = (event) => {
-        this.setState({ loading: true });
+        this.getRepos(event.target.value);
     };
 
     render() {
         return (
             <div>
                 <header className={classNames(
+                    "animated fadeInDown",
                     this.state.repos.length && this.state.username.length ? 'show' : ''
                 )}
                 >
                     <div className="content">
                         <p><span role="img" aria-label="Search Icon">🔍</span> Fetch Repos</p>
-                        <form
-                            onSubmit={this.handleSubmit}
-                        >
-                            <input 
-                                onChange={this.handleChange} 
-                                onClick={this.changeLoading}
-                                type="search"
-                                placeholder="Username"
-                            />
-                        </form>
+                        <DebounceInput
+                            minLength={2}
+                            debounceTimeout={300}
+                            type="search"
+                            onChange={this.handleChange}
+                            placeholder="Username"
+                        />
                     </div>
                 </header>
 

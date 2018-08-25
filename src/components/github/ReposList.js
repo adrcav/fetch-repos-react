@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import abbreviate from 'number-abbreviate';
 
 const ReposList = props => {
     return (
@@ -15,7 +16,7 @@ const ReposList = props => {
                         )} 
                         key={ repo.id }
                     >
-                        <p className="stars">{ repo.stargazers_count }</p>
+                        <p className="stars">{ abbreviate(repo.stargazers_count, 1) }</p>
                         <h3>{ repo.name }</h3>
                         <p>{ repo.description }</p>
                     </div>
