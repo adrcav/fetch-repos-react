@@ -5,7 +5,7 @@
 
 ## Demo
 ![Preview](https://i.imgur.com/P6nH61s.gif)
-### 💻 [View Live Preview](https://github.com/felixrieseberg/windows95/releases)
+### 💻 [View Live Preview](https://adrcav.github.io/fetch-repos-react/)
 
 ## Built With
 - React
